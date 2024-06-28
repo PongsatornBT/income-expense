@@ -23,7 +23,7 @@ function Dropdown({callback}) {
 
   return (
     <>
-        <select  onChange={callback} className="select select-bordered w-full max-w-md min-w-48" required>
+        <select onChange={callback} className="select select-bordered w-full max-w-md min-w-48" required>
           <option name="category" selected hidden value="0">Category</option>
           {
             category.map((cat) => (

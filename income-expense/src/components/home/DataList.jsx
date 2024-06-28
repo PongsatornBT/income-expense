@@ -18,6 +18,19 @@ function DataList({ newData }) {
     }
   }
 
+  let result = ''
+  if(data.length === 0){
+    result = (
+      <span>Data entry</span>
+    )
+  }else{
+    result = (
+      data.map((dt, index) => (
+        <Collapse key={index} newData={newData} cat={dt.cat_name} id={dt.cat_id} />
+      ))
+    )
+  }
+
   useEffect(() => {
     fetchData()
     // console.log('test');
@@ -28,9 +41,7 @@ function DataList({ newData }) {
       <h1 className="font-thin text-3xl lg:text-6xl md:text-5xl sm:text-4xl">Data-List</h1><br/>
       <div className="grid max-w-3xl min-w-md gap-4">
         {
-          data.map((dt, index) => (
-            <Collapse key={index} newData={newData} cat={dt.cat_name} id={dt.cat_id} />
-          ))
+          result
         }
       </div>
     </div>

@@ -23,7 +23,6 @@ function CheckBox({callback}) {
 
   return (
     <div className="max-h-10">
-        
         {
             type.map((ty) => (
                 <label className="badge badge-lg cursor-pointer" key={ty.type_id}>

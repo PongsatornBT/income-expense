@@ -17,8 +17,8 @@ function App() {
     <>
       <NavBar />
       <div className="px-20 lg:pt-20 md:pt-10 grid gap-10 lg:grid-cols-2 md:lg:grid-cols-1">
-        <AddData data={data} setData={setData}/>
-        <DataList newData={data}/>
+        <AddData setData={setData}/>
+        <DataList newData={data} />
       </div>
     </>
   )
