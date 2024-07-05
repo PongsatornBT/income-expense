@@ -9,7 +9,7 @@ function Statistic() {
   const yearNow = now.getFullYear()
   const [date, setDate] = useState(
     {
-      dateStart:`${yearNow}-01`,
+      dateStart:`${yearNow}-1`,
       dateEnd:`${yearNow}-12`
     }
   )

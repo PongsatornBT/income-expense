@@ -103,6 +103,16 @@ app.get('/api/today-amount', async (req, res) => {
   }
 })
 
+app.post('/api/statistic', async (req, res) => {
+  const data = req.body
+  try {
+    let results = await conn.query("SELECT CONCAT(YEAR(date), '-', LPAD(MONTH(date), 2, '0')) AS `year_month`, SUM(CASE WHEN type_id = 1 THEN amount ELSE 0 END) AS income, SUM(CASE WHEN type_id = 2 THEN amount ELSE 0 END) AS expense FROM statistic WHERE date >= ? AND date <= ? GROUP BY `year_month` ORDER BY `year_month`",[data.dateStart+'-1',data.dateEnd+'-31'])
+    res.json(results[0])
+    // res.json(req.body);
+  } catch (error) {
+    console.error(error)
+  }
+})
 
 app.post('/api/add', async (req, res) => {
   const data = req.body
@@ -123,6 +133,7 @@ app.listen(port, async () => {
   console.log("Get today category: localhost:3000/api/today-cat");
   console.log("Get today category: localhost:3000/api/today-amount");
   console.log("Add data: localhost:3000/api/add");
-  console.log("Get category: localhost:3000//api/category");
-  console.log("Get type: localhost:3000//api/type");
+  console.log("Get category: localhost:3000/api/category");
+  console.log("Get type: localhost:3000/api/type");
+  console.log("Get statistic: localhost:3000/api/statistic");
 })
